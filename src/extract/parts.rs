@@ -41,6 +41,6 @@ impl FromRequest for Version {
     type Error = Infallible;
 
     fn from_request(request: &mut Request) -> Result<Self, Self::Error> {
-        Ok(request.version().clone())
+        Ok(request.version())
     }
 }

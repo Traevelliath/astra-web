@@ -23,6 +23,12 @@ impl Router<()> {
     }
 }
 
+impl Default for Router<()> {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 impl<L> Router<L>
 where
     L: Layer,
@@ -82,7 +88,7 @@ where
         O: Layer,
     {
         let mut prefix = prefix.to_owned();
-        if !prefix.ends_with("/") {
+        if !prefix.ends_with('/') {
             prefix.push('/');
         }
 
@@ -153,7 +159,7 @@ where
 
                     request.extensions_mut().insert(Params(params));
 
-                    return self.layer.call(request, |req| handler.call(req));
+                    self.layer.call(request, |req| handler.call(req))
                 }
                 Err(_) => ResponseBuilder::new()
                     .status(StatusCode::NOT_FOUND)

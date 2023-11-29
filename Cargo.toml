@@ -7,8 +7,8 @@ edition = "2021"
 http2 = ["astra/http2"]
 
 [dependencies]
-astra = { version = "0.3.0", path = "../" }
+astra = { git = "https://github.com/ibraheemdev/astra" }
 bytes = "1.5.0"
-http = "0.2.9"
+http = "0.2.11"
 matchit = "0.7.2"
 serde = "1.0.192"
